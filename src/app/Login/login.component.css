@@ -1,0 +1,30 @@
+.center {
+    margin: auto;
+    padding: 200px 0;
+    width: 50%;
+    height: 50%;
+    text-align: center;
+}
+
+.bold-blue-text{
+    color:blue;
+    font-size: 25;
+    font-weight: bold;
+}
+
+.button {
+    background-color: #0F66D0; 
+    border: none;
+    border-radius: 8px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 16px;
+    width: 150px;
+}
+
+.button:hover {
+    background-color: #6EACD1}
