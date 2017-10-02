@@ -1,7 +1,153 @@
+<div class="container">
+  
+    <h1 align="center">Registration Form</h1>
+    <hr>
+    <form #heroForm="ngForm">
+      <div [hidden]="heroForm.submitted">
+  
+        <div class="form-group">
+          <label for="name">Employee Name</label>
+          <input id="name" name="name" class="form-control"
+                 required minlength="4" required maxlength="25"
+                 [(ngModel)]="hero.name" #name="ngModel" >
+  
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+  
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+            <div *ngIf="name.errors.maxlength">
+              Name must not exceed 25 characters.
+            </div>
+             
+          </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="name">Employee ID</label>
+          <input id="alterEgo" name="alterEgo" class="form-control"
+          required minlength="6" required maxlength="8" 
+          [(ngModel)]="hero.alterEgo" #alterEgo="ngModel" >
+
+          <div *ngIf="alterEgo.invalid && (alterEgo.dirty || alterEgo.touched)"
+          class="alert alert-danger">
+
+       <div *ngIf="alterEgo.errors.required">
+         ID is required.
+       </div>
+       <div *ngIf="alterEgo.errors.minlength">
+         ID must be at least 6 numbers long.
+       </div>
+       <div *ngIf="alterEgo.errors.maxlength">
+         ID must not exceed 8 numbers.
+       </div>
+       </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="email">Email ID</label>
+          <input id="email" name="email" class="form-control"
+           required maxlength="30" 
+          [(ngModel)]="hero.email" #email="ngModel" >
+
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger">
+
+       <div *ngIf="email.errors.required">
+         Email ID is required.
+       </div>
+       <div *ngIf="email.errors.maxlength">
+         Email ID must not exceed 30 characters.
+       </div>
+       </div>
+        </div>
+
+            <div class="form-group">
+            <label for="phnumber">Phone Number</label>
+          <input id="phnumber" name="phnumber" class="form-control"
+           required maxlength="10" 
+          [(ngModel)]="hero.phnumber" #phnumber="ngModel" >
+
+          <div *ngIf="phnumber.invalid && (phnumber.dirty || phnumber.touched)"
+          class="alert alert-danger">
+
+       <div *ngIf="phnumber.errors.required">
+         Phone Number is required.
+       </div>
+       <div *ngIf="phnumber.errors.maxlength">
+         Phone Number must not exceed 10 numbers.
+       </div>
+       </div>
+        </div>
+
+        <div class="form-group">
+          <label for="power">Portfolio</label>
+          <select id="power" name="power" class="form-control"
+                  required [(ngModel)]="hero.power" #power="ngModel" >
+            <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+          </select>
+  
+          <div *ngIf="power.errors && power.touched" class="alert alert-danger">
+            <div *ngIf="power.errors.required">Portfolio is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+            <label for="password">Password</label>
+          <input id="password" name="password" class="form-control"
+           required maxlength="15" 
+          [(ngModel)]="hero.password" #password="ngModel" >
+
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="alert alert-danger">
+
+       <div *ngIf="password.errors.required">
+         Password is required.
+       </div>
+       <div *ngIf="password.errors.maxlength">
+         Password must not exceed 15 characters.
+       </div>
+       </div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Confirm Password</label>
+          <input id="password" name="password" class="form-control"
+           required maxlength="15" 
+          [(ngModel)]="hero.password" #password="ngModel" >
+
+          <div *ngIf="password.invalid && (password.dirty || password.touched)"
+          class="alert alert-danger">
+
+       <div *ngIf="password.errors.required">
+         Password is required.
+       </div>
+       <div *ngIf="password.errors.maxlength">
+         Password must not exceed 15 characters.
+       </div>
+       </div>
+        </div>
 
 
+        <button type="submit" class="btn btn-default"
+                [disabled]="heroForm.invalid">Submit</button>
+        <button type="button" class="btn btn-default"
+                (click)="heroForm.resetForm({})">Reset</button>
+      </div>
+  
+      <div class="submitted-message" *ngIf="heroForm.submitted">
+        <p>You've submitted your details, {{ heroForm.value.name }}!</p>
+        <button (click)="heroForm.resetForm({})">Add new user</button>
+      </div>
 
-<p>
-  {{title}}
-</p>
-<router-outlet></router-outlet>
+
+      
+
+    </form>
+  
+  </div>
+  

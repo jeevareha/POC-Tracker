@@ -1,19 +1,15 @@
 import { Component } from '@angular/core';
-import { RouterModule, ActivatedRoute, ParamMap, Router }   from '@angular/router';
+//import { RouterModule, ActivatedRoute, ParamMap, Router }   from '@angular/router';
 
 @Component({
   selector: 'app-registration-page',
   templateUrl: './registration-page.component.html',
-  styleUrls: ['./registration-page.component.css']
+  //styleUrls: ['.../styles.css']
 })
 export class RegistrationPage {
-  //title:string;
-  //constructor(title_from_login: string) { 
-   // this.title = title_from_login;
-    
-  //}
-
+ 
+  powers = ['Services', 'Front End', 'Backend'];
   
-  title = 'Registration Page - Under Construction';
-
+   hero = {name: '', alterEgo: '', email: '', password: '', power: this.powers[0], phnumber: ''};
+ 
 }
