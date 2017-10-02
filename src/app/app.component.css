@@ -7,13 +7,13 @@
 }
 
 .bold-blue-text{
-  color:blue;
+  color:#1870E4;
   font-size: 25;
   font-weight: bold;
 }
 
 .button {
-  background-color: #0F66D0; 
+  background-color: #1870E4; 
   border: none;
   border-radius: 8px;
   color: white;

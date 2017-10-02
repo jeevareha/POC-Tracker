@@ -21,7 +21,7 @@ export class Login {
   }
     register(){
       this.email = this.password = '';
-      let register = new RegistrationPage();
+      //let register = new RegistrationPage();
       
     }
     signup() {
