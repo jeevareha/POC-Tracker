@@ -14,7 +14,8 @@ import { AuthService } from './auth.service';
 
 const appRoutes: Routes = [
   {   path:'app-registration-page', component : RegistrationPage },
-  {   path: 'app-login', component: Login }
+  {   path: 'app-login', component: Login },
+  { path:'', redirectTo : '/app-login', pathMatch : 'full'}
 ];
 
 @NgModule({

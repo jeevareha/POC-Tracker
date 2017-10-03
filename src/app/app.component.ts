@@ -11,8 +11,6 @@ import { Login } from "./login/login.component";
 })
 export class AppComponent {
 
-  //regPage : RegistrationPage;
-  title = 'POC Tracker';
-  
+   
 
 }
