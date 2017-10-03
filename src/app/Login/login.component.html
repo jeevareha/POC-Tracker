@@ -1,23 +1,36 @@
 
-  
+
+ 
 <h1 *ngIf="authService.user | async">Welcome {{ (authService.user | async)?.email }}!</h1>
 
+
 <div *ngIf="!(authService.user | async)">
-  <form action="/action_page.php" class="center">
-  <label class="bold-blue-text">User email: </label> 
-  <input class=".bold-blue-text" name="user" type="text" [(ngModel)]="email" placeholder="Email" ><br><br>
+  <form class="center">
+  
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input id="email" type="text" class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+      </div>
+      <br>
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password">
+      </div>
 
-  <label class="bold-blue-text">Password: </label>
-  <input type="password" name="password" [(ngModel)]="password" placeholder="Password"><br><br>
+    <!-- <label for="user">User email: </label> 
+  <input class="form-control" name="user" type="text" [(ngModel)]="email" placeholder="Email" >
 
-  <button type="submit" class="button" (click)="login()" [disabled]="!email || !password">Login</button>&emsp;
-  <button type="submit" class="button" (click)="register()" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
-  <p><button type="submit" class="button" (click)="signup()" [disabled]="!email || !password">Sign up</button>
-    <div style="text-align:center" [(ngModel)]="errormsg">{{errormsg}} </div>
+  <label for="password">Password: </label>
+  <input class="form-control" type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
+
+  <br><br>
+  <button type="button" class="button" (click)="login()" [disabled]="!email || !password">Login</button>&emsp;
+  <button type="button" class="button" (click)="register()" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
+  <button type="button" class="button" (click)="signup()" [disabled]="!email || !password">Sign up</button>
+    <div style="text-align:center" *ngIf="errormsg">{{errormsg}} </div>
     
   </form>
-  
-</div>
+ </div> 
 
 <button (click)="logout()" *ngIf="authService.user | async">
   Logout

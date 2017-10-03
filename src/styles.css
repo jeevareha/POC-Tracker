@@ -1,5 +1,4 @@
-/* Master Styles */
-h1 {
+/* h1 {
     color: #450C86;
     font-family: 'Times New Roman', Times, serif;
     font-size: 250%;
@@ -40,8 +39,7 @@ h1 {
     cursor: auto;
   }
   
-  /* Navigation link styles */
-  nav a {
+    nav a {
     padding: 5px 10px;
     text-decoration: none;
     margin-right: 10px;
@@ -61,9 +59,8 @@ h1 {
     color: #039be5;
   }
   
-  /* everywhere else */
-  * {
+  {
     font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
     
   }
-  
+   */
