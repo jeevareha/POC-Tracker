@@ -2,8 +2,10 @@
 <h1 style="text-align:center" class="bold-blue-text">
     {{title}}
   </h1>
-
- <app-login></app-login> 
+  <nav>
+    <a routerLink="/app-login" routerLinkActive="active">LOGIN</a> <br>
+    <a routerLink="/app-registration-page" routerLinkActive="active">REGISTRATION</a>
+ </nav>
   <router-outlet></router-outlet>
 
 
