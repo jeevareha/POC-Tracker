@@ -25,16 +25,17 @@ export class AuthService {
       }
     
       login(email: string, password: string) {
-        this.firebaseAuth
-          .auth
-          .signInWithEmailAndPassword(email, password)
-          .then(value => {
-            console.log('Nice, it worked!');
-          })
-          .catch(err => {
-            console.log('Something went wrong:',err.message);
-            this.msg = err.message;
-          });
+        // this.firebaseAuth
+        //   .auth
+        //   .signInWithEmailAndPassword(email, password)
+        //   .then(value => {
+        //     console.log('Nice, it worked!');
+        //     return "Success";
+        //   }).catch(err => {
+        //     console.log('Something went wrong:',err.message);
+        //     return err.message;
+        //   });
+        this.firebaseAuth.auth.signInWithEmailAndPassword(email,password).then(response => {return response});
       }
           
       logout() {

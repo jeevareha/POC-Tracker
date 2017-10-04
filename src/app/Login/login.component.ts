@@ -14,6 +14,7 @@ export class Login {
   email: string;
   password: string;
   errormsg;
+  isError:Boolean;
   
   constructor(public authService: AuthService) {
     this.errormsg= this.authService.msg;
@@ -29,10 +30,12 @@ export class Login {
       this.email = this.password = '';
     }
     login() {
-      this.authService.login(this.email, this.password);
+
+      console.log("Calling auth");
+      this.errormsg = this.authService.login(this.email, this.password);
       this.email = this.password = '';   
-      this.errormsg= this.authService.msg;
-      console.log("Login.ts : ",this.authService.msg);
+      console.log(this.errormsg);
+      // this.errormsg= this.authService.msg;
     }
     logout() {
       this.authService.logout();
