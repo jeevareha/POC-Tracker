@@ -10,6 +10,6 @@ export class RegistrationPage {
  
   powers = ['Services', 'Front End', 'Backend'];
   
-   hero = {name: '', alterEgo: '', email: '', password: '', power: this.powers[0], phnumber: ''};
+   hero = {name: '', alterEgo: '', email: '', password: '', cpassword: '', power: this.powers[0], phnumber: ''};
  
 }
