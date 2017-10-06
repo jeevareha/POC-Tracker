@@ -42,7 +42,5 @@ export class Login {
       this.authService.logout();
     }
 
-    func(){
-      console.log("Hello");
-    }
+    
     }
