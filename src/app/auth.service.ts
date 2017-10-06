@@ -25,7 +25,8 @@ export class AuthService {
       }
     
       login(email: string, password: string) {
-           var msg = this.firebaseAuth
+        
+        var msg = this.firebaseAuth
           .auth
           .signInWithEmailAndPassword(email, password)
           .then(value => {
@@ -35,9 +36,9 @@ export class AuthService {
             console.log('Something went wrong:',err.message);
             this.msg = err.message; 
           });
-          //let obj = JSON.parse(msg);
           console.log("MSG : "+msg);
-        return this.msg;
+          
+        return Object.values(msg);
         //this.firebaseAuth.auth.signInWithEmailAndPassword(email,password).then(response => {return response});
       }
           

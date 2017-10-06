@@ -14,7 +14,7 @@
       <br>
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password">
+      <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password" (keyup.enter)="login()">
       </div>
 
     <!-- <label for="user">User email: </label> 
@@ -24,7 +24,7 @@
   <input class="form-control" type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
 
   <br><br>
-  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" [disabled]="!email || !password">Login</button>&emsp;
+  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" [disabled]="!email || !password" name="login">Login</button>&emsp;
   <button type="button" class="btn btn-primary btn-lg" (click)="register()" [disabled]="!email || !password" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
   <button type="button" class="btn btn-primary btn-lg" (click)="signup()" [disabled]="!email || !password">Sign up</button>
  
