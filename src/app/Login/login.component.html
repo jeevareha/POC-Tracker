@@ -7,7 +7,7 @@
 <div *ngIf="!(authService.user | async)">
   <form class="center">
   
-    <div class="input-group">
+      <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
       <input id="email" type="text" class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
       </div>
@@ -24,10 +24,12 @@
   <input class="form-control" type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
 
   <br><br>
-  <button type="button" class="button" (click)="login()" [disabled]="!email || !password">Login</button>&emsp;
-  <button type="button" class="button" (click)="register()" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
-  <button type="button" class="button" (click)="signup()" [disabled]="!email || !password">Sign up</button>
-    <div style="text-align:center" *ngIf="errormsg">{{errormsg}} </div>
+  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" [disabled]="!email || !password">Login</button>&emsp;
+  <button type="button" class="btn btn-primary btn-lg" (click)="register()" [disabled]="!email || !password" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
+  <button type="button" class="btn btn-primary btn-lg" (click)="signup()" [disabled]="!email || !password">Sign up</button>
+ 
+  <br><br>
+  <div class="alert alert-danger" style="text-align:center" *ngIf="errormsg">{{errormsg}} </div> 
     
   </form>
  </div> 
