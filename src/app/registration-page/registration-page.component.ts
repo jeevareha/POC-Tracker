@@ -8,8 +8,8 @@ import { Component } from '@angular/core';
 })
 export class RegistrationPage {
  
-  powers = ['Services', 'Front End', 'Backend'];
+  portfolios = ['Services', 'Front End', 'Backend'];
   
-   hero = {name: '', alterEgo: '', email: '', password: '', cpassword: '', power: this.powers[0], phnumber: ''};
+   register = {name: '', EmpId: '', email: '', password: '', cpassword: '', portfolio: this.portfolios[0], phnumber: ''};
  
 }

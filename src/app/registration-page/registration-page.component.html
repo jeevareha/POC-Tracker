@@ -1,15 +1,21 @@
+<style>
+  .jumbotron { 
+      background-color: #10f5d6; 
+      /* color: #ffffff; */
+  }
+  </style>
+
 <div class="container">
-  
-    <h1 align="center">Registration Form</h1>
+     <h2 align="center">Registration Form</h2>
     <hr>
-    <form #heroForm="ngForm">
-      <div [hidden]="heroForm.submitted">
-  
+    <form #registerForm="ngForm">
+      <div [hidden]="registerForm.submitted">  
         <div class="form-group">
-          <label for="name">Employee Name</label>
-          <input id="name" name="name" class="form-control"
+          <label for="name">Employee Name</label> 
+          <font color="red">*</font>
+          <input id="name" name="name" class="form-control" placeholder="Enter Employee Name"
                  required minlength="4" required maxlength="25"
-                 [(ngModel)]="hero.name" #name="ngModel" >
+                 [(ngModel)]="register.name" #name="ngModel" >
   
           <div *ngIf="name.invalid && (name.dirty || name.touched)"
                class="alert alert-danger">
@@ -29,20 +35,21 @@
   
         <div class="form-group">
             <label for="name">Employee ID</label>
-          <input id="alterEgo" name="alterEgo" class="form-control"
+            <font color="red">*</font>
+          <input id="EmpId" type="number" name="EmpId" class="form-control" placeholder="Enter Employee ID"
           required minlength="6" required maxlength="8" 
-          [(ngModel)]="hero.alterEgo" #alterEgo="ngModel" >
+          [(ngModel)]="register.EmpId" #EmpId="ngModel" >
 
-          <div *ngIf="alterEgo.invalid && (alterEgo.dirty || alterEgo.touched)"
+          <div *ngIf="EmpId.invalid && (EmpId.dirty || EmpId.touched)"
           class="alert alert-danger">
 
-       <div *ngIf="alterEgo.errors.required">
+       <div *ngIf="EmpId.errors.required">
          ID is required.
        </div>
-       <div *ngIf="alterEgo.errors.minlength">
+       <div *ngIf="EmpId.errors.minlength">
          ID must be at least 6 numbers long.
        </div>
-       <div *ngIf="alterEgo.errors.maxlength">
+       <div *ngIf="EmpId.errors.maxlength">
          ID must not exceed 8 numbers.
        </div>
        </div>
@@ -50,9 +57,9 @@
   
         <div class="form-group">
             <label for="email">Email ID</label>
-          <input id="email" name="email" class="form-control"
-           required maxlength="30" 
-          [(ngModel)]="hero.email" #email="ngModel" >
+            <font color="red">*</font>
+          <input type="email" id="email" name="email" class="form-control" placeholder="Enter your Email ID"
+          [(ngModel)]="register.email" #email="ngModel" >
 
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
           class="alert alert-danger">
@@ -68,39 +75,33 @@
 
             <div class="form-group">
             <label for="phnumber">Phone Number</label>
-          <input id="phnumber" name="phnumber" class="form-control"
-           required maxlength="10" 
-          [(ngModel)]="hero.phnumber" #phnumber="ngModel" >
-
-          <div *ngIf="phnumber.invalid && (phnumber.dirty || phnumber.touched)"
+          <input id="phnumber" type="number"name="phnumber" class="form-control" placeholder="Enter Contact Number"
+           maxlength="10" >
+           <!-- [(ngModel)]="register.phnumber" #phnumber="ngModel" -->
+          <!-- <div *ngIf="phnumber.invalid && phnumber.dirty"
           class="alert alert-danger">
-
-       <div *ngIf="phnumber.errors.required">
-         Phone Number is required.
-       </div>
-       <div *ngIf="phnumber.errors.maxlength">
-         Phone Number must not exceed 10 numbers.
-       </div>
-       </div>
+              </div> -->
         </div>
 
         <div class="form-group">
-          <label for="power">Portfolio</label>
-          <select id="power" name="power" class="form-control"
-                  required [(ngModel)]="hero.power" #power="ngModel" >
-            <option *ngFor="let p of powers" [value]="p">{{p}}</option>
+          <label for="portfolio">Portfolio</label>
+          <font color="red">*</font>
+          <select id="portfolio" name="portfolio" class="form-control" placeholder="Select Portfolio"
+                  required [(ngModel)]="register.portfolio" #portfolio="ngModel" >
+            <option *ngFor="let p of portfolios" [value]="p">{{p}}</option>
           </select>
   
-          <div *ngIf="power.errors && power.touched" class="alert alert-danger">
-            <div *ngIf="power.errors.required">Portfolio is required.</div>
+          <div *ngIf="portfolio.errors && portfolio.touched" class="alert alert-danger">
+            <div *ngIf="portfolio.errors.required">Portfolio is required.</div>
           </div>
         </div>
   
         <div class="form-group">
             <label for="password">Password</label>
-          <input type="password" name="password" class="form-control"
+            <font color="red">*</font>
+          <input type="password" name="password" class="form-control" placeholder="Create new password"
            required maxlength="15" 
-          [(ngModel)]="hero.password" #password="ngModel" >
+          [(ngModel)]="register.password" #password="ngModel" >
 
           <div *ngIf="password.invalid && (password.dirty || password.touched)"
           class="alert alert-danger">
@@ -116,9 +117,10 @@
 
         <div class="form-group">
             <label for="cpassword">Confirm Password</label>
-          <input id="cpassword" type="password" name="cpassword" class="form-control"
+            <font color="red">*</font>
+          <input id="cpassword" type="password" name="cpassword" class="form-control" placeholder="Confirm password"
            required maxlength="15" 
-          [(ngModel)]="hero.cpassword" #cpassword="ngModel" >
+          [(ngModel)]="register.cpassword" #cpassword="ngModel" >
 
           <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
           class="alert alert-danger">
@@ -132,22 +134,16 @@
        </div>
         </div>
 
-
         <button type="submit" class="btn btn-default"
-                [disabled]="heroForm.invalid">Submit</button>
+                [disabled]="registerForm.invalid">Submit</button>
         <button type="button" class="btn btn-default"
-                (click)="heroForm.resetForm({})">Reset</button>
+                (click)="registerForm.resetForm({})">Reset</button>
       </div>
   
-      <div class="submitted-message" *ngIf="heroForm.submitted">
-        <p>You've submitted your details, {{ heroForm.value.name }}!</p>
-        <button (click)="heroForm.resetForm({})">Add new user</button>
+      <div class="submitted-message" *ngIf="registerForm.submitted">
+        <p>You've submitted your details, {{ registerForm.value.name }}!</p>
+        <button (click)="registerForm.resetForm({})">Go to POC Tracker page</button>
       </div>
-
-
-      
-
-    </form>
-  
-  </div>
+   </form>
+</div>
   
