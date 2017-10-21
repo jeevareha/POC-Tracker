@@ -5,18 +5,28 @@
 
 
 <div *ngIf="!(authService.user | async)">
-  <form class="center">
+  <form class="center" #loginForm="ngForm" novalidate >
   
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input id="email" type="text" class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+      <input id="email" #emailRef="ngModel" type="text" class="form-control" name="email" placeholder="Email" ngModel required>
+     </div>
+     <div  *ngIf= "emailRef.errors && (emailRef.dirty || emailRef.touched)"> 
+      <div [hidden] ="!emailRef.errors.required">
+        <font color="Red">Please enter email id</font>
       </div>
+     </div>
       <br>
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-      <input id="password" type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="password" (keyup.enter)="login()">
-      </div>
-
+      <input id="password" #pwdRef="ngModel" type="password" class="form-control" name="password" placeholder="Password" ngModel (keyup.enter)="login()" required>
+    </div>
+    <div  *ngIf= "pwdRef.errors && (pwdRef.dirty || pwdRef.touched)"> 
+        <div [hidden] ="!pwdRef.errors.required">
+          <font color="Red">Please enter password</font>
+        </div>
+       </div>
+    
     <!-- <label for="user">User email: </label> 
   <input class="form-control" name="user" type="text" [(ngModel)]="email" placeholder="Email" >
 
@@ -24,9 +34,9 @@
   <input class="form-control" type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
 
   <br><br>
-  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" [disabled]="!email || !password" name="login">Login</button>&emsp;
-  <button type="button" class="btn btn-primary btn-lg" (click)="register()" [disabled]="!email || !password" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
-  <button type="button" class="btn btn-primary btn-lg" (click)="signup()" [disabled]="!email || !password">Sign up</button>
+  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" [disabled]="emailRef.invalid || pwdRef.invalid" name="login">Login</button>&emsp;
+  <button type="button" class="btn btn-primary btn-lg" (click)="register()" [disabled]="emailRef.invalid || pwdRef.invalid" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
+  <button type="button" class="btn btn-primary btn-lg" (click)="signup()" [disabled]="emailRef.invalid || pwdRef.invalid">Sign up</button>
  
   <br><br>
   <div class="alert alert-danger" style="text-align:center" *ngIf="errormsg">{{errormsg}} </div> 
