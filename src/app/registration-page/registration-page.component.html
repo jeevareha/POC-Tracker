@@ -8,25 +8,25 @@
 <div class="container">
      <h2 align="center">Registration Form</h2>
     <hr>
-    <form #registerForm="ngForm">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegisterForm(registerForm)">
       <div [hidden]="registerForm.submitted">  
         <div class="form-group">
           <label for="name">Employee Name</label> 
           <font color="red">*</font>
           <input id="name" name="name" class="form-control" placeholder="Enter Employee Name"
                  required minlength="4" required maxlength="25"
-                 [(ngModel)]="register.name" #name="ngModel" >
+                 [(ngModel)]="employeeService.currentEmployee.name" #name="ngModel" >
   
           <div *ngIf="name.invalid && (name.dirty || name.touched)"
                class="alert alert-danger">
   
-            <div *ngIf="name.errors.required">
+          <div *ngIf="name.errors.required">
               Name is required.
-            </div>
-            <div *ngIf="name.errors.minlength">
+          </div>
+          <div *ngIf="name.errors.minlength">
               Name must be at least 4 characters long.
-            </div>
-            <div *ngIf="name.errors.maxlength">
+          </div>
+          <div *ngIf="name.errors.maxlength">
               Name must not exceed 25 characters.
             </div>
              
@@ -38,7 +38,7 @@
             <font color="red">*</font>
           <input id="EmpId" type="number" name="EmpId" class="form-control" placeholder="Enter Employee ID"
           required minlength="6" required maxlength="8" 
-          [(ngModel)]="register.EmpId" #EmpId="ngModel" >
+          [(ngModel)]="employeeService.currentEmployee.EmpId" #EmpId="ngModel" >
 
           <div *ngIf="EmpId.invalid && (EmpId.dirty || EmpId.touched)"
           class="alert alert-danger">
@@ -59,7 +59,7 @@
             <label for="email">Email ID</label>
             <font color="red">*</font>
           <input type="email" id="email" name="email" class="form-control" placeholder="Enter your Email ID"
-          [(ngModel)]="register.email" #email="ngModel" >
+          [(ngModel)]="employeeService.currentEmployee.email" #email="ngModel" >
 
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
           class="alert alert-danger">
@@ -76,7 +76,7 @@
             <div class="form-group">
             <label for="phnumber">Phone Number</label>
           <input id="phnumber" type="number"name="phnumber" class="form-control" placeholder="Enter Contact Number"
-           maxlength="10" >
+           maxlength="10" [(ngModel)]="employeeService.currentEmployee.phnumber" #phnumber="ngModel">
            <!-- [(ngModel)]="register.phnumber" #phnumber="ngModel" -->
           <!-- <div *ngIf="phnumber.invalid && phnumber.dirty"
           class="alert alert-danger">
@@ -87,7 +87,7 @@
           <label for="portfolio">Portfolio</label>
           <font color="red">*</font>
           <select id="portfolio" name="portfolio" class="form-control" placeholder="Select Portfolio"
-                  required [(ngModel)]="register.portfolio" #portfolio="ngModel" >
+                  required [(ngModel)]="employeeService.currentEmployee.portfolios" #portfolio="ngModel" >
             <option *ngFor="let p of portfolios" [value]="p">{{p}}</option>
           </select>
   
@@ -101,7 +101,7 @@
             <font color="red">*</font>
           <input type="password" name="password" class="form-control" placeholder="Create new password"
            required maxlength="15" 
-          [(ngModel)]="register.password" #password="ngModel" >
+          [(ngModel)]="employeeService.currentEmployee.password" #password="ngModel" >
 
           <div *ngIf="password.invalid && (password.dirty || password.touched)"
           class="alert alert-danger">
@@ -120,7 +120,7 @@
             <font color="red">*</font>
           <input id="cpassword" type="password" name="cpassword" class="form-control" placeholder="Confirm password"
            required maxlength="15" 
-          [(ngModel)]="register.cpassword" #cpassword="ngModel" >
+          [(ngModel)]="employeeService.currentEmployee.cpassword" #cpassword="ngModel" >
 
           <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
           class="alert alert-danger">
@@ -147,3 +147,5 @@
    </form>
 </div>
   
+
+<app-employee-details></app-employee-details>

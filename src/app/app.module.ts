@@ -1,38 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule,Routes }   from '@angular/router';
-import { FormsModule }  from '@angular/forms';
+
+import { AppRoutingModule } from './app.routing.module';
+import { routingComponents } from './app.routing.module';
+
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
-import { RegistrationPage } from './registration-page/registration-page.component';
-import { Login } from './login/login.component';
-
-import { AngularFireModule } from 'angularfire2';
+import { RegistrationPageComponent } from './registration-page/registration-page.component';
+import { LoginComponent } from './Login/login.component';
 import { environment } from '../environments/environment';
+
 import { AngularFireAuthModule } from 'angularfire2/auth';
-
-import { AuthService } from './auth.service';
-
-const appRoutes: Routes = [
-  {   path:'app-registration-page', component : RegistrationPage },
-  {   path: 'app-login', component: Login },
-  { path:'', redirectTo : '/app-login', pathMatch : 'full'}
-];
+import { AuthService } from './services/auth.service';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationPage,
-    Login,
+    routingComponents,
+    EmployeeDetailsComponent
 ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    ),
+    AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthService],
   bootstrap: [
