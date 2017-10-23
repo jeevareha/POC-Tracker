@@ -9,11 +9,21 @@ import { EmployeeModel } from '../shared/employee.model';
 })
 export class EmployeeDetailsComponent implements OnInit {
 
-  employeeList: AngularFireList<EmployeeModel>;
+  employeeList: EmployeeModel[];
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    this.employeeService.getData();
+    let x = this.employeeService.getData();
+    x.snapshotChanges().subscribe(item => {
+      this.employeeList = [];
+      item.forEach(element => {
+        let y = element.payload.toJSON();
+        y['$key']= element.key;
+        this.employeeList.push(y as EmployeeModel);
+      }
+      );
+
+    })
   }
 
 }

@@ -1,3 +1,8 @@
-<p>
-  employee-details-page works!
-</p>
+<H2>List of exitsing employees in DB</H2>
+
+<ol>
+  <li *ngFor = "let employee of employeeList">
+    {{employee.EmpId}} - {{employee.name}} - {{employee.portfolio}}
+  </li>
+
+</ol>
