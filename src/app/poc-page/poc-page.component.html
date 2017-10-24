@@ -1,0 +1,8 @@
+<div class="container">
+    <h2 align="center">POC Details page</h2>
+   <hr>
+   <form #pocForm="ngForm" (ngSubmit)="onSubmitRegisterForm(pocForm)">
+    <div [hidden]="pocForm.submitted">  
+      <div class="form-group">
+       
+     <app-employee-details></app-employee-details>

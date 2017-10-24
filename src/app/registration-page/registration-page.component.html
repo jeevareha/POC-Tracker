@@ -142,10 +142,9 @@
   
       <div class="submitted-message" *ngIf="registerForm.submitted">
         <p>You've submitted your details, {{ registerForm.value.name }}!</p>
-        <button (click)="registerForm.resetForm({})">Go to POC Tracker page</button>
+        <button (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active">Go to POC Tracker page</button>
       </div>
    </form>
 </div>
   
-
 <app-employee-details></app-employee-details>
