@@ -16,18 +16,16 @@ export class LoginComponent {
   errormsg;
   isError: Boolean;
 
+
+
   constructor(public authService: AuthService, employee: EmployeeService) {
     this.errormsg = this.authService.msg;
     console.log('login.ts', this.authService.msg);
   }
-    register() {
-      this.email = this.password = '';
-      // let register = new RegistrationPage();
-    }
-    signup() {
-      this.authService.signup(this.email, this.password);
-      this.email = this.password = '';
-    }
+    // signup() {
+    //   this.authService.signup(this.email, this.password);
+    //   this.email = this.password = '';
+    // }
     login() {
 
       console.log('Calling auth');

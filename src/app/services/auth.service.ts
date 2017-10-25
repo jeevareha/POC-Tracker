@@ -7,8 +7,8 @@ import { Observable } from 'rxjs/Observable';
 export class AuthService {
   msg: String;
   user: Observable<firebase.User>;
-  
-     constructor(private firebaseAuth: AngularFireAuth) {
+
+  constructor(private firebaseAuth: AngularFireAuth) {
       this.user = firebaseAuth.authState;
      }
       signup(email: string, password: string) {
@@ -20,34 +20,26 @@ export class AuthService {
           })
           .catch(err => {
             console.log('Something went wrong:',err.message);
-            
-          });    
+          });
       }
-    
       login(email: string, password: string) {
-        
-        
         this.firebaseAuth
           .auth
           .signInWithEmailAndPassword(email, password)
           .then(value => {
             console.log('Nice, it worked!');
-            this.msg = "Success";
+            this.msg = 'Success';
           }).catch(err => {
             console.log('Something went wrong:',err.message);
             this.msg = err.message; 
           });
-          console.log("MSG : "+this.msg);
-          var msg=this.msg;  
-        return msg;
-        //this.firebaseAuth.auth.signInWithEmailAndPassword(email,password).then(response => {return response});
+        return this.msg;
+        // this.firebaseAuth.auth.signInWithEmailAndPassword(email,password).then(response => {return response});
       }
-          
       logout() {
         this.firebaseAuth
           .auth
           .signOut();
       }
-      
     }
 
