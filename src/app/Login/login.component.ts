@@ -26,14 +26,13 @@ export class LoginComponent {
     //   this.authService.signup(this.email, this.password);
     //   this.email = this.password = '';
     // }
-    login() {
+
+      login() {
 
       console.log('Calling auth');
       this.errormsg = this.authService.login(this.email, this.password);
       console.log(this.errormsg);
       // this.email = this.password = '';
-
-      // this.errormsg= this.authService.msg;
     }
     logout() {
       this.authService.logout();
