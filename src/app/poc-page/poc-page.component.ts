@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { EmployeeService } from '../services/employee.service'
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-poc-page',
-    templateUrl: './poc-page.component.html',
-    
-  })
+  selector: 'app-poc-page',
+  templateUrl: './poc-page.component.html',
+ })
+export class PocPageComponent implements OnInit {
 
-  export class POCPageComponent {
-    
+  constructor() { }
+
+  ngOnInit() {
   }
+
+}

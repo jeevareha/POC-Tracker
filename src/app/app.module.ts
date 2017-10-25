@@ -15,12 +15,14 @@ import { AuthService } from './services/auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
+import { PocPageComponent } from './poc-page/poc-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     routingComponents,
-    EmployeeDetailsComponent
+    EmployeeDetailsComponent,
+    PocPageComponent
 ],
   imports: [
     BrowserModule,
@@ -33,6 +35,10 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
   providers: [AuthService],
   bootstrap: [
     AppComponent
+  ],
+  exports:[
+    PocPageComponent
   ]
+
 })
 export class AppModule { }
