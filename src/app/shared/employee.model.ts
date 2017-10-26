@@ -8,5 +8,5 @@ export class EmployeeModel {
     phnumber: number;
     portfolio: string = this.portfolios[0];
     password: string;
-    cpassword: string;
+
 }
