@@ -21,7 +21,7 @@ getData(){
       EmpId: employee.EmpId,
       email: employee.email,
       phnumber: employee.phnumber,
-      portfolio: employee.portfolio
+      // portfolio: employee.portfolio
     })
   }
 }
