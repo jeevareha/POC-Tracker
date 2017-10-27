@@ -5,7 +5,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 @Injectable()
 export class EmployeeService {
 
-  employeeList: AngularFireList<any>;
+  employeeList: AngularFireList<any> = null;
   currentEmployee: EmployeeModel = new EmployeeModel();
   constructor(private firebase: AngularFireDatabase) { }
 
@@ -21,7 +21,7 @@ getData(){
       EmpId: employee.EmpId,
       email: employee.email,
       phnumber: employee.phnumber,
-      portfolio: employee.portfolio
+      // portfolio: employee.portfolio
     })
   }
 }

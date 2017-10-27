@@ -1,8 +1,31 @@
 <H2>List of exitsing employees in DB</H2>
 
-<ol>
+<!-- <ol>
   <li *ngFor = "let employee of employeeList">
     {{employee.EmpId}} - {{employee.name}} - {{employee.portfolio}}
   </li>
 
-</ol>
+</ol> -->
+
+
+<div class="container">
+  
+      <table class="table table-bordered table-hover table-condensed">
+                      
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Employee Name</th>
+              <th>Email ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let employee of employeeList">
+              <td>{{employee.EmpId}}</td>
+              <td>{{employee.name}}</td>
+              <td>{{employee.email}}</td>
+            </tr>
+           
+          </tbody>
+        </table>
+      </div>

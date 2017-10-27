@@ -14,7 +14,7 @@ import { AuthService } from '../services/auth.service';
 export class RegistrationPageComponent {
   constructor(private employeeService: EmployeeService, public authService: AuthService ) {}
 
-  portfolios = ['Services', 'Front End', 'Backend'];
+  // portfolios = ['Services', 'Front End', 'Backend'];
   // register = {name: '', EmpId: '', email: '', password: '', cpassword: '', portfolio: this.portfolios[0], phnumber: ''};
 
   onSubmitRegisterForm(form: NgForm)
