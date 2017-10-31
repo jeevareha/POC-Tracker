@@ -1,31 +1,32 @@
-<H2>List of exitsing employees in DB</H2>
-
-<!-- <ol>
-  <li *ngFor = "let employee of employeeList">
-    {{employee.EmpId}} - {{employee.name}} - {{employee.portfolio}}
-  </li>
-
-</ol> -->
-
+<html>
+<body>
+<H3>List of exitsing employees in DB</H3>
 
 <div class="container">
-  
-      <table class="table table-bordered table-hover table-condensed">
-                      
+    <div class="form-group row">
+        <div class="col-xs-4">
+    <input type="text" class="form-control" [(ngModel)]="queryString" id="search" placeholder="Search - ID or Name or Email">
+    <br>
+        </div>
+    </div>
+        <table class="table table-bordered table-hover table-condensed">  
           <thead>
             <tr>
-              <th>Employee ID</th>
-              <th>Employee Name</th>
-              <th>Email ID</th>
+              <th style="text-align:center">Employee ID</th>
+              <th style="text-align:center">Employee Name</th>
+              <th style="text-align:center">Email ID</th>
             </tr>
           </thead>
-          <tbody>
-            <tr *ngFor = "let employee of employeeList">
-              <td>{{employee.EmpId}}</td>
-              <td>{{employee.name}}</td>
-              <td>{{employee.email}}</td>
+          <tbody id="empTable">
+            <tr *ngFor = "let employee of employeeList | FilterPipe: queryString">
+              <td style="text-align:center">{{employee.EmpId}}</td>
+              <td style="text-align:center">{{employee.name}}</td>
+              <td style="text-align:center">{{employee.email}}</td>
             </tr>
-           
           </tbody>
         </table>
       </div>
+
+
+</body>
+</html>
