@@ -34,7 +34,7 @@
   <input class="form-control" type="password" name="password" [(ngModel)]="password" placeholder="Password"> -->
 
   <br><br>
-  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" (click)="loginForm.resetForm({})" [disabled]="emailRef.invalid || pwdRef.invalid" name="login">Login</button>&emsp;
+  <button type="button"  class="btn btn-primary btn-lg" (click)="login()" (click)="loginForm.resetForm({})" [disabled]="emailRef.invalid || pwdRef.invalid" name="login" routerLink="/app-poc-page" routerLinkActive="active">Login</button>&emsp;
   <button type="button" class="btn btn-primary btn-lg" routerLink="/app-registration-page" routerLinkActive="active">Register</button>
 
   <!-- <button type="button" class="btn btn-primary btn-lg" (click)="signup()" [disabled]="emailRef.invalid || pwdRef.invalid">Sign up</button> -->

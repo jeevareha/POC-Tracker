@@ -21,8 +21,6 @@ export class RegistrationPageComponent {
   {
     console.log(form.value);
     this.employeeService.insertEmployee(form.value);
-    console.log(this.employeeService.currentEmployee.email);
-    console.log(this.employeeService.currentEmployee.password);
 
     this.authService.signup(this.employeeService.currentEmployee.email, this.employeeService.currentEmployee.password);
     this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
