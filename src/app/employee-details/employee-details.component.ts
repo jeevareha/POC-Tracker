@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireList } from 'angularFire2/database';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeModel } from '../shared/employee.model';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-employee-details',
@@ -10,10 +11,12 @@ import { EmployeeModel } from '../shared/employee.model';
 export class EmployeeDetailsComponent implements OnInit {
 
   employeeList: EmployeeModel[];
+  startAt = new Subject()
+  endAt = new Subject()
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    let x = this.employeeService.getData();
+    let x = this.employeeService.getData(this.startAt, this.endAt);
     x.snapshotChanges().subscribe(item => {
       this.employeeList = [];
       item.forEach(element => {

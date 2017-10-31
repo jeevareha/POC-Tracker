@@ -16,10 +16,12 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { PocPageComponent } from './poc-page/poc-page.component';
+import { FilterPipe } from './shared/Pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
     routingComponents,
     EmployeeDetailsComponent,
     PocPageComponent
@@ -32,7 +34,9 @@ import { PocPageComponent } from './poc-page/poc-page.component';
     AngularFireAuthModule,
     AngularFireDatabaseModule
   ],
-  providers: [AuthService],
+  providers: [
+    AuthService,
+    FilterPipe],
   bootstrap: [
     AppComponent
   ],
