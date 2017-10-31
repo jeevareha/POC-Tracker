@@ -10,7 +10,7 @@ export class EmployeeService {
   employeeList1;
   constructor(private firebase: AngularFireDatabase) { }
 
-getData(start, end) {
+getData() {
   this.employeeList = this.firebase.list('employees', ref => {
     let q = ref.limitToLast(5)//.startAt(start).endAt(end);
     return q;

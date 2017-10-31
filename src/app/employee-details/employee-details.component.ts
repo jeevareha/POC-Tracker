@@ -11,12 +11,12 @@ import { Subject } from 'rxjs/Subject';
 export class EmployeeDetailsComponent implements OnInit {
 
   employeeList: EmployeeModel[];
-  startAt = new Subject()
-  endAt = new Subject()
+  // startAt = new Subject()
+  // endAt = new Subject()
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
-    let x = this.employeeService.getData(this.startAt, this.endAt);
+    let x = this.employeeService.getData();
     x.snapshotChanges().subscribe(item => {
       this.employeeList = [];
       item.forEach(element => {
