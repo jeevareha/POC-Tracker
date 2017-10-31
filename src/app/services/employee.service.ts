@@ -7,6 +7,7 @@ export class EmployeeService {
 
   employeeList: AngularFireList<any> = null;
   currentEmployee: EmployeeModel = new EmployeeModel();
+  employeeList1;
   constructor(private firebase: AngularFireDatabase) { }
 
 getData(){
@@ -16,6 +17,17 @@ getData(){
 
   insertEmployee(employee: EmployeeModel)
   {
+    let x = this.getData();
+    x.snapshotChanges().subscribe(item => {
+      this.employeeList1 = [];
+      item.forEach(element => {
+        let y = element.payload.toJSON();
+        y['$key'] = element.key;
+        this.employeeList1.push(y as EmployeeModel);
+      }
+      );
+    });
+
     this.employeeList.push({
       name: employee.name,
       EmpId: employee.EmpId,
