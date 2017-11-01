@@ -12,7 +12,7 @@ export class EmployeeService {
 
 getData() {
   this.employeeList = this.firebase.list('employees', ref => {
-    let q = ref.limitToLast(5)//.startAt(start).endAt(end);
+    let q = ref.limitToLast(10)//.startAt(start).endAt(end);
     return q;
   });
   return this.employeeList;

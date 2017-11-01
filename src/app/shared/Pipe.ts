@@ -13,7 +13,9 @@ export class FilterPipe implements PipeTransform {
             input = input.toLowerCase();
             return value.filter(function (el: any) {
                 return el.name.toLowerCase().indexOf(input) > -1 ||
-                    el.email.toLowerCase().indexOf(input) > -1;
+                    el.email.toLowerCase().indexOf(input) > -1 ||
+                    el.phnumber.toString().indexOf(input) > -1 ||
+                    el.EmpId.toString().indexOf(input) > -1;
             });
         }
         return value;

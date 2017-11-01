@@ -6,7 +6,7 @@ export class EmployeeModel {
     EmpId: string;
     email: string;
     phnumber: number;
-    // portfolio: string = this.portfolios[0];
+    project: string;
     password: string;
 
 }
