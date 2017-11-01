@@ -20,9 +20,5 @@ const appRoutes: Routes = [
   })
 
   export class AppRoutingModule {  }
-<<<<<<< HEAD
   export const routingComponents = [LoginComponent, RegistrationPageComponent, PocPageComponent];
   
-=======
-  export const routingComponents = [LoginComponent, RegistrationPageComponent, EmployeeDetailsComponent];
->>>>>>> 6e101b68c4f371b55cdc300cdf9d467ba31cfcd8
