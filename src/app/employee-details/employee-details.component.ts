@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireList } from 'angularFire2/database';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeModel } from '../shared/employee.model';
-import { Subject } from 'rxjs/Subject';
+import { FilterPipe } from '../shared/Pipe';
 
 @Component({
   selector: 'app-employee-details',
@@ -11,9 +11,10 @@ import { Subject } from 'rxjs/Subject';
 export class EmployeeDetailsComponent implements OnInit {
 
   employeeList: EmployeeModel[];
-  // startAt = new Subject()
-  // endAt = new Subject()
-  constructor(private employeeService: EmployeeService) { }
+
+  constructor(private employeeService: EmployeeService) {
+
+  }
 
   ngOnInit() {
     let x = this.employeeService.getData();
@@ -21,12 +22,12 @@ export class EmployeeDetailsComponent implements OnInit {
       this.employeeList = [];
       item.forEach(element => {
         let y = element.payload.toJSON();
-        y['$key']= element.key;
+        y['$key'] = element.key;
         this.employeeList.push(y as EmployeeModel);
       }
       );
 
-    })
+    });
   }
 
 }
