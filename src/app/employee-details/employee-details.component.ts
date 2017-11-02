@@ -3,6 +3,7 @@ import { AngularFireList } from 'angularFire2/database';
 import { EmployeeService } from '../services/employee.service';
 import { EmployeeModel } from '../shared/employee.model';
 import { FilterPipe } from '../shared/Pipe';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -12,7 +13,7 @@ export class EmployeeDetailsComponent implements OnInit {
 
   employeeList: EmployeeModel[];
 
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService, private authService: AuthService) {
 
   }
 
@@ -28,6 +29,9 @@ export class EmployeeDetailsComponent implements OnInit {
       );
 
     });
+  }
+  logout() {
+    this.authService.logout();
   }
 
 }

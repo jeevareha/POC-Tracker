@@ -25,4 +25,8 @@ export class RegistrationPageComponent {
     this.authService.signup(this.employeeService.currentEmployee.email, this.employeeService.currentEmployee.password);
     this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
   }
+
+  logout() {
+    this.authService.logout();
+  }
 }

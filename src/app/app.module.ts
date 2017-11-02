@@ -17,6 +17,7 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { PocPageComponent } from './poc-page/poc-page.component';
 import { FilterPipe } from './shared/Pipe';
+import { MyProfilePageComponent } from './my-profile-page/my-profile-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FilterPipe } from './shared/Pipe';
     FilterPipe,
     routingComponents,
     EmployeeDetailsComponent,
-    PocPageComponent
+    PocPageComponent,
+    MyProfilePageComponent
 ],
   imports: [
     BrowserModule,
@@ -40,7 +42,7 @@ import { FilterPipe } from './shared/Pipe';
   bootstrap: [
     AppComponent
   ],
-  exports:[
+  exports: [
     PocPageComponent
   ]
 
