@@ -40,6 +40,7 @@ export class AuthService {
         this.firebaseAuth
           .auth
           .signOut();
+          console.log('Logout is called');
       }
     }
 
