@@ -23,7 +23,7 @@ export class LoginComponent {
   constructor(public firebaseAuth: AngularFireAuth, public authService: AuthService, private router: Router) {
     this.firebaseAuth.auth.onAuthStateChanged((user) => {
       if(user !=null) {
-        this.router.navigateByUrl('/poc-page');
+        this.router.navigateByUrl('app-poc-page');
       }
     }
     // this.errormsg = this.authService.msg;
@@ -41,7 +41,7 @@ export class LoginComponent {
         .then(value => {
           console.log('Nice, it worked!');
           this.msg = 'Success';
-          // this.router.navigateByUrl('/app-poc-page');
+          this.router.navigateByUrl('app-poc-page');
         }).catch(err => {
           this.msg = err.message;
           console.log('Something went wrong:', this.msg);
