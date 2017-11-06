@@ -1,150 +1,133 @@
 <div class="container">
-     <h2 align="center">Registration Form</h2>
-    <hr>
-    <form #registerForm="ngForm" (ngSubmit)="onSubmitRegisterForm(registerForm)">
-      <div [hidden]="registerForm.submitted">  
-        
-        <div class="form-group">
-          <label for="name">Employee Name</label> 
-          <font color="red">*</font>
-          <input id="name" name="name" class="form-control" placeholder="Enter Employee Name"
-                 required minlength="4" required maxlength="25"
-                 [(ngModel)]="employeeService.currentEmployee.name" #name="ngModel" >
-  
-          <div *ngIf="name.invalid && (name.dirty || name.touched)"
-               class="alert alert-danger">
-  
-            <div *ngIf="name.errors.required">
-              Name is required.
-            </div>
-            <div *ngIf="name.errors.minlength">
-              Name must be at least 4 characters long.
-            </div>
-            <div *ngIf="name.errors.maxlength">
-              Name must not exceed 25 characters.
-            </div>
-             
+  <h2 align="center">Registration Form</h2>
+  <hr>
+  <form #registerForm="ngForm" (ngSubmit)="onSubmitRegisterForm(registerForm)">
+    <div [hidden]="registerForm.submitted">
+
+      <div class="form-group">
+        <label for="name">Employee Name</label>
+        <font color="red">*</font>
+        <input id="name" name="name" class="form-control" placeholder="Enter Employee Name" required minlength="4" maxlength="25"
+          [(ngModel)]="employeeService.currentEmployee.name" #name="ngModel">
+
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+
+          <div *ngIf="name.errors.required">
+            Name is required.
           </div>
-        </div>
-  
-        <div class="form-group">
-            <label for="name">Employee ID</label>
-            <font color="red">*</font>
-          <input id="EmpId" type="number" name="EmpId" class="form-control" placeholder="Enter Employee ID"
-            required minlength="6" required maxlength="8" 
-            [(ngModel)]="employeeService.currentEmployee.EmpId" #EmpId="ngModel" >
-
-            <div *ngIf="EmpId.invalid && (EmpId.dirty || EmpId.touched)"
-            class="alert alert-danger">
-
-              <div *ngIf="EmpId.errors.required">
-                ID is required.
-              </div>
-              <div *ngIf="EmpId.errors.minlength">
-                ID must be at least 6 numbers long.
-              </div>
-              <div *ngIf="EmpId.errors.maxlength">
-                ID must not exceed 8 numbers.
-              </div>
-            </div>
-        </div>
-  
-        <div class="form-group">
-            <label for="email">Email ID</label>
-            <font color="red">*</font>
-<input type="email" id="email" type="email" name="email" class="form-control" placeholder="Enter your Email ID"
-
- [(ngModel)]="employeeService.currentEmployee.email" maxlength="30" #email="ngModel" type="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
-
-
-          <div *ngIf="email.invalid && (email.dirty || email.touched)"
-          class="alert alert-danger">
-         
-
-       <div *ngIf="email.errors.required">
-         Email ID is required.
-       </div>
-       <!-- <div *ngIf="email.errors.maxlength">
-         Email ID must not exceed 30 characters.
-       </div> -->
-        <div *ngIf="email.errors.pattern">
-          Email is invalid
-        </div>
-</div>
-
-        </div>
-
-        <div class="form-group">
-          <label for="phnumber">Phone Number</label>
-          <input id="phnumber" type="number"name="phnumber" class="form-control" placeholder="Enter Contact Number"
-           maxlength="10" [(ngModel)]="employeeService.currentEmployee.phnumber" #phnumber="ngModel">
-           <!-- [(ngModel)]="register.phnumber" #phnumber="ngModel" -->
-          <!-- <div *ngIf="phnumber.invalid && phnumber.dirty"
-          class="alert alert-danger">
-              </div> -->
-        </div>
-
-        <!-- <div class="form-group">
-          <label for="portfolio">Portfolio</label>
-          <font color="red">*</font>
-          <select id="portfolio" name="portfolio" class="form-control" placeholder="Select Portfolio"
-                  required [(ngModel)]="employeeService.currentEmployee.portfolios" #portfolio="ngModel" >
-            <option *ngFor="let p of portfolios" [value]="p">{{p}}</option>
-          </select>
-  
-          <div *ngIf="portfolio.errors && portfolio.touched" class="alert alert-danger">
-            <div *ngIf="portfolio.errors.required">Portfolio is required.</div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
           </div>
-        </div> -->
-  
-        <div class="form-group">
-            <label for="password">Password</label>
-            <font color="red">*</font>
-          <input type="password" name="password" class="form-control" placeholder="Create new password"
-            required minlength="6" 
-            [(ngModel)]="employeeService.currentEmployee.password" #password="ngModel" >
-
-          <div *ngIf="password.invalid && (password.dirty || password.touched)"
-            class="alert alert-danger">
-
-            <div *ngIf="password.errors.required">
-              Password is required.
-            </div>
-            <div *ngIf="password.errors.minlength">
-              Password must be atleast 6 characters.
-            </div>
+          <div *ngIf="name.errors.maxlength">
+            Name must not exceed 25 characters.
           </div>
+
         </div>
-
-        <div class="form-group">
-            <label for="cpassword">Confirm Password</label>
-            <font color="red">*</font>
-          <input id="cpassword" type="password" name="cpassword" class="form-control" placeholder="Confirm password"
-           required minlength="6" 
-            [(ngModel)]="employeeService.currentEmployee.cpassword" #cpassword="ngModel" >
-
-          <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)"
-            class="alert alert-danger">
-
-            <div *ngIf="cpassword.errors.required">
-              Confirm password to register.
-            </div>
-            <div *ngIf="cpassword.errors.minlength">
-              Password must be atleast 6 characters.
-            </div>
-          </div>
-        </div>
-      
-        <button type="submit" class="btn btn-default" [disabled]="registerForm.invalid" >Submit</button>
-        <button type="button" class="btn btn-default"
-                (click)="registerForm.resetForm({})">Reset</button>
-
-    </div>  
-      <div class="submitted-message" *ngIf="registerForm.submitted">
-        <p>You've submitted your details, {{ registerForm.value.name }}!</p>
-        <button (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active">All Projects</button>
       </div>
 
-   </form>
+      <div class="form-group">
+        <label for="name">Employee ID</label>
+        <font color="red">*</font>
+        <input id="EmpId" type="text" name="EmpId" class="form-control" placeholder="Enter Employee ID" required minlength="6" required
+          maxlength="8" pattern="[0-9]{6,8}" [(ngModel)]="employeeService.currentEmployee.EmpId" #EmpId="ngModel">
+
+        <div *ngIf="EmpId.invalid && (EmpId.dirty || EmpId.touched)" class="alert alert-danger">
+
+          <div *ngIf="EmpId.errors.required">
+            Employee ID is required.
+          </div>
+          <div *ngIf="EmpId.errors.pattern">
+            Employee ID must be 6 to 8 digits of numbers.
+          </div>
+          <div *ngIf="EmpId.errors.maxlength">
+            ID must not exceed 8 numbers.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email ID</label>
+        <font color="red">*</font>
+        <input type="email" id="email" type="email" name="email" class="form-control" placeholder="Enter your Email ID" [(ngModel)]="employeeService.currentEmployee.email"
+          maxlength="30" #email="ngModel" type="email" required pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+
+
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+
+          <div *ngIf="email.errors.required">
+            Email ID is required.
+          </div>
+
+          <div *ngIf="email.errors.pattern">
+            Email ID is invalid. It must be in "smith@gmail.com" format.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="phnumber">Phone Number</label>
+        <input id="phnumber" type="text" name="phnumber" class="form-control" placeholder="Enter Contact Number" required pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+          maxlength="12" [(ngModel)]="employeeService.currentEmployee.phnumber" #phnumber="ngModel">
+
+        <div *ngIf="phnumber.invalid && phnumber.dirty" class="alert alert-info">
+
+          <div *ngIf="phnumber.touched">
+            Phone number is not mandatory.
+          </div>
+
+          <div *ngIf="phnumber.errors.pattern">
+            Phone number must be in 123-456-7890 format.
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <font color="red">*</font>
+        <input type="password" name="password" class="form-control" placeholder="Create new password" required minlength="8" maxlength="25"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="employeeService.currentEmployee.password" #password="ngModel">
+
+        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+          <div *ngIf="password.errors.required">
+            Password is required.
+          </div>
+          <div *ngIf="password.errors.pattern">
+            Password must contain at least one number, one uppercase and lowercase letter and at least 8 or more characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="cpassword">Confirm Password</label>
+        <font color="red">*</font>
+        <input id="cpassword" type="password" name="cpassword" class="form-control" placeholder="Confirm password" required minlength="8"
+          maxlength="25" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" [(ngModel)]="employeeService.currentEmployee.cpassword"
+          #cpassword="ngModel">
+
+        <div *ngIf="cpassword.invalid && (cpassword.dirty || cpassword.touched)" class="alert alert-danger">
+
+          <div *ngIf="cpassword.errors.required">
+            Confirm password to register.
+          </div>
+          <div *ngIf="cpassword.errors.pattern">
+            Password must contain at least one number, one uppercase and lowercase letter and at least 8 or more characters.
+          </div>
+
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-default" [disabled]="registerForm.invalid">Submit</button>
+      <button type="button" class="btn btn-default" (click)="registerForm.resetForm({})">Reset</button>
+
+    </div>
+    <div class="submitted-message" *ngIf="registerForm.submitted">
+      <p>You've submitted your details, {{ registerForm.value.name }}!</p>
+      <button (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active">All Projects</button>
+    </div>
+
+  </form>
 </div>
-  
