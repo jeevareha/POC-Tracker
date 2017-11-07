@@ -18,6 +18,7 @@ import { EmployeeDetailsComponent } from './employee-details/employee-details.co
 import { PocPageComponent } from './poc-page/poc-page.component';
 import { FilterPipe } from './shared/Pipe';
 import { MyProfilePageComponent } from './my-profile-page/my-profile-page.component';
+import { CustomFormsModule } from "ng2-validation";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { MyProfilePageComponent } from './my-profile-page/my-profile-page.compon
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    CustomFormsModule
   ],
   providers: [
     AuthService,
