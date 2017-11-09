@@ -2,13 +2,18 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs/Observable';
+import { Router } from "@angular/router";
 
 @Injectable()
 export class AuthService {
   msg: any;
   user: Observable<firebase.User>;
+  authState: any = null;
 
-  constructor(private firebaseAuth: AngularFireAuth) {
+  constructor(private firebaseAuth: AngularFireAuth, private router: Router) {
+      this.firebaseAuth.authState.subscribe((auth) => {
+        this.authState = auth
+      });    
       this.user = firebaseAuth.authState;
      }
       // signup(email: string, password: string) {
@@ -43,6 +48,7 @@ export class AuthService {
           .auth
           .signOut();
           console.log('Logout is called');
+          this.router.navigate(['/'])          
       }
     }
 
