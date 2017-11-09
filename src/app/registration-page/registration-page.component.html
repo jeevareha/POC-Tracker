@@ -68,17 +68,17 @@
 
       <div class="form-group">
         <label for="phnumber">Phone Number</label>
-        <input id="phnumber" type="text" name="phnumber" class="form-control" placeholder="Enter Contact Number" required pattern="\d{3}[\-]\d{3}[\-]\d{4}"
+        <input id="phnumber" type="text" name="phnumber" class="form-control" placeholder="Enter Contact Number" required pattern="\d{10}"
           maxlength="12" [(ngModel)]="employeeService.currentEmployee.phnumber" #phnumber="ngModel">
 
         <div *ngIf="phnumber.invalid && phnumber.dirty" class="alert alert-info">
 
-          <div *ngIf="phnumber.touched">
+          <!-- <div *ngIf="phnumber.touched">
             Phone number is not mandatory.
-          </div>
+          </div> -->
 
           <div *ngIf="phnumber.errors.pattern">
-            Phone number must be in 123-456-7890 format.
+            Phone number must contain 10 digits.
           </div>
 
         </div>
@@ -130,6 +130,7 @@
     <div class="submitted-message" *ngIf="registerForm.submitted">
       <p>You've submitted your details, {{ registerForm.value.name }}!</p>
       <button (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active">All Projects</button>
+      {{authErrorMsg}}
     </div>
 
   </form>

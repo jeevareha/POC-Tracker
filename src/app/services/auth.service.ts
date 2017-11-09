@@ -10,19 +10,18 @@ export class AuthService {
 
   constructor(private firebaseAuth: AngularFireAuth) {
       this.user = firebaseAuth.authState;
-      
      }
-      signup(email: string, password: string) {
-        this.firebaseAuth
-          .auth
-          .createUserWithEmailAndPassword(email, password)
-          .then(value => {
-            console.log('Success!', value);
-          })
-          .catch(err => {
-            console.log('Something went wrong:',err.message);
-          });
-      }
+      // signup(email: string, password: string) {
+      //   this.firebaseAuth
+      //     .auth
+      //     .createUserWithEmailAndPassword(email, password)
+      //     .then(value => {
+      //       console.log('Success!', value);
+      //     })
+      //     .catch(err => {
+      //       console.log('Something went wrong:',err.message);
+      //     });
+      // }
       // login(email: string, password: string) {
       //   this.firebaseAuth
       //     .auth
