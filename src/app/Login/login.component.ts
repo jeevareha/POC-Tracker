@@ -4,6 +4,7 @@ import { RouterModule, ActivatedRoute, ParamMap, Router } from '@angular/router'
 import { RegistrationPageComponent } from '../registration-page/registration-page.component';
 import { AuthService } from '../services/auth.service';
 import { EmployeeService } from '../services/employee.service';
+import * as firebase from 'firebase/app';
 
 
 @Component({
@@ -21,14 +22,18 @@ export class LoginComponent {
 
 
   constructor(public firebaseAuth: AngularFireAuth, public authService: AuthService, private router: Router) {
-    this.firebaseAuth.auth.onAuthStateChanged((user) => {
-      if(user != authService.authState) {
-        this.router.navigateByUrl('app-poc-page');
+    
+    this.firebaseAuth.auth.onAuthStateChanged(user => {
+      if(user) {
+        // user is signed in
+      } else {
+        // user is signed out
       }
     }
-    // this.errormsg = this.authService.msg;
-    // console.log('login.ts', this.authService.msg);
-    )}
+  )}
+    // // this.errormsg = this.authService.msg;
+    // // console.log('login.ts', this.authService.msg);
+    // )}
     // signup() {
     //   this.authService.signup(this.email, this.password);
     //   this.email = this.password = '';
@@ -36,8 +41,8 @@ export class LoginComponent {
 
     login(email, password) {
       this.firebaseAuth
-        .auth
-        .signInWithEmailAndPassword(this.email, this.password)
+        .auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then (value => {
+        this.firebaseAuth.auth.signInWithEmailAndPassword(this.email, this.password)
         .then(value => {
           console.log('Nice, it worked!');
           this.msg = 'Success';
@@ -46,7 +51,10 @@ export class LoginComponent {
           this.msg = err.message;
           console.log('Something went wrong:', this.msg);
            
-        });
+        }).catch(err => {
+          console.log(this.msg = err.message);
+      })
+     })
       // return this.msg;
       
       // this.firebaseAuth.auth.signInWithEmailAndPassword(email,password).then(response => {return response});
