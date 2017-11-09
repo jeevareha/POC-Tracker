@@ -3,7 +3,7 @@ import { NgForm } from '@angular/forms';
 import { EmployeeService } from '../services/employee.service';
 import { AuthService } from '../services/auth.service';
 import { AngularFireAuth } from 'angularfire2/auth';
-
+import { Router } from '@angular/router';
 // import { RouterModule, ActivatedRoute, ParamMap, Router }   from '@angular/router';
 
 @Component({
@@ -13,29 +13,36 @@ import { AngularFireAuth } from 'angularfire2/auth';
   // styleUrls: ['.../styles.css']
 })
 export class RegistrationPageComponent {
-  constructor(private employeeService: EmployeeService, public authService: AuthService, private firebaseAuth: AngularFireAuth ) {}
-  localForm: NgForm;
-  authErrorMsg: string;
-  msg: any;
-  
+  constructor(private employeeService: EmployeeService, 
+              public authService: AuthService, 
+              private firebaseAuth: AngularFireAuth, 
+              private router: Router) { }
 
-  onSubmitRegisterForm(form: NgForm)
-  {
-      this.signup(this.employeeService.currentEmployee.email, this.employeeService.currentEmployee.password);
-      this.localForm = form;
+  localForm: NgForm;
+  authResponseMsg: string;
+  msg: any;
+  registrationCompleteFlag: boolean;
+
+  onSubmitRegisterForm(form: NgForm) {
+    this.signup(this.employeeService.currentEmployee.email, this.employeeService.currentEmployee.password);
+    this.localForm = form;
     console.log(form.value);
   }
 
-  dbInsert()
-  {
-      this.employeeService.insertEmployee(this.localForm.value);
-      this.authErrorMsg = 'Success';
-      this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
+  dbInsert() {
+    this.employeeService.insertEmployee(this.localForm.value);
+    this.authResponseMsg = 'You have completed your registration.';
+    this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
+    this.registrationCompleteFlag = true;
+    console.log('RegistrationFlg : ', this.registrationCompleteFlag);
+
   }
 
-  blockDbInsert()
-  {
-    this.authErrorMsg = 'User details already exists';
+  blockDbInsert() {
+    this.authResponseMsg = 'Provided user details already exists. Please verify your details again.';
+    this.registrationCompleteFlag = false;
+    console.log('RegistrationFlg : ', this.registrationCompleteFlag);
+
   }
 
   logout() {
@@ -55,4 +62,8 @@ export class RegistrationPageComponent {
         this.blockDbInsert();
       });
   }
+
+  // gotoPOCDetails() {
+  //   this.router.navigateByUrl('app-poc-page');
+  // }
 }
