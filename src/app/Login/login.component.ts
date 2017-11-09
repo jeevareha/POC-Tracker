@@ -22,7 +22,7 @@ export class LoginComponent {
 
   constructor(public firebaseAuth: AngularFireAuth, public authService: AuthService, private router: Router) {
     this.firebaseAuth.auth.onAuthStateChanged((user) => {
-      if(user !=null) {
+      if(user != authService.authState) {
         this.router.navigateByUrl('app-poc-page');
       }
     }
