@@ -142,17 +142,24 @@
               <h4 class="modal-title">Registration Confirmation</h4>
             </div>
             <div class="modal-body">
-              <div class="submitted-message" *ngIf="registerForm.submitted" >
+              
                 <p>Hi {{ registerForm.value.name }}!
                   <br> {{authResponseMsg}}
                 </p>
-              </div>
+
             </div>
             <div class="modal-footer">
-              <button *ngIf = "registrationCompleteFlag" (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active" data-dismiss="modal"> OK </button>
-              <button *ngIf="!registrationCompleteFlag" routerLink="/app-registration-page" routerLinkActive="active" data-dismiss="modal"> OK </button>
+                <div class="submitted-message" *ngIf="registerForm.submitted" >
+              <div>
+                  <button *ngIf = "registrationCompleteFlag" (click)="registerForm.resetForm({})" routerLink="/app-poc-page" routerLinkActive="active" data-dismiss="modal"> OK </button>
+                </div>
+              <div>
+                  <button *ngIf="!registrationCompleteFlag" routerLink="/app-registration-page" routerLinkActive="active" data-dismiss="modal"> OK </button>
+              </div>
+             
+              </div>
             </div>
-          </div>
+          </div> 
       
         </div>
       </div>
