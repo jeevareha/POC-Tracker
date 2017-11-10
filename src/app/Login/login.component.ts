@@ -17,23 +17,27 @@ export class LoginComponent {
   email: string;
   password: string;
   msg: any;
-
+  user: Observable<firebase.User>;
+  authState: any;
   // isError: Boolean;
 
 
 
-  constructor(public firebaseAuth: AngularFireAuth, public authService: AuthService, private router: Router) {
-    
-    this.firebaseAuth.auth.onAuthStateChanged
-  }
-  //   (user => {
-  //     if(user) {
-  //       this.user = firebaseAuth.authState;
-  //     } else {
-  //       // user is signed out
-  //     }
-  //   }
-  // )}
+  constructor(private firebaseAuth: AngularFireAuth, private authService: AuthService, private router: Router) {
+    this.firebaseAuth.authState.subscribe((auth) => {
+      this.authState = auth
+    });
+    this.firebaseAuth.auth.onAuthStateChanged(user => {
+      if(user) {
+        // user is signed in
+        this.user = firebaseAuth.authState;
+        this.router.navigateByUrl("app-poc-page")
+      } else {
+        // user is signed out
+        this.router.navigate(['/'])
+      }
+    }
+  )}
     // // this.errormsg = this.authService.msg;
     // // console.log('login.ts', this.authService.msg);
     // )}
