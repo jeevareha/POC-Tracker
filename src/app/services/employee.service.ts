@@ -39,4 +39,10 @@ getData() {
       // portfolio: employee.portfolio
     })
   }
+
+  removeAll() {
+    this.employeeList = this.firebase.list('employees');
+    this.employeeList.remove();
+    console.log('List deleted')
+  }
 }
