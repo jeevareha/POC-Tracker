@@ -34,4 +34,8 @@ export class EmployeeDetailsComponent implements OnInit {
     this.authService.logout();
   }
 
+  deleteAll() {
+    this.employeeService.removeAll();
+  }
+
 }
