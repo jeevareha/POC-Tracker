@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Component } from '@angular/core';
 import { RouterModule, ActivatedRoute, ParamMap, Router } from '@angular/router';
@@ -16,21 +17,23 @@ export class LoginComponent {
   email: string;
   password: string;
   msg: any;
-  state: string='';
+
   // isError: Boolean;
 
 
 
   constructor(public firebaseAuth: AngularFireAuth, public authService: AuthService, private router: Router) {
     
-    this.firebaseAuth.auth.onAuthStateChanged(user => {
-      if(user) {
-        // user is signed in
-      } else {
-        // user is signed out
-      }
-    }
-  )}
+    this.firebaseAuth.auth.onAuthStateChanged
+  }
+  //   (user => {
+  //     if(user) {
+  //       this.user = firebaseAuth.authState;
+  //     } else {
+  //       // user is signed out
+  //     }
+  //   }
+  // )}
     // // this.errormsg = this.authService.msg;
     // // console.log('login.ts', this.authService.msg);
     // )}
