@@ -68,10 +68,14 @@
 
       <div class="form-group">
         <label for="phnumber">Phone Number</label>
-        <input id="phnumber" type="text" name="phnumber" class="form-control" placeholder="Enter Contact Number(Optional)"  pattern="\d{10}" maxlength="10"
+        <input id="phnumber" type="text" name="phnumber" class="form-control" placeholder="Enter Contact Number(Optional)"  required pattern="\d{10}" maxlength="10"
          [(ngModel)]="employeeService.currentEmployee.phnumber" #phnumber="ngModel">
 
-         <div *ngIf="phnumber.invalid && phnumber.dirty" class="alert alert-info">
+         <div *ngIf="phnumber.invalid && (phnumber.dirty || phnumber.touched)" class="alert alert-danger">
+          
+                    <div *ngIf="phnumber.errors.required">
+                      Phone number is required.
+                    </div>
           <div *ngIf="phnumber.errors.pattern" >
             Phone number must contain 10 digits.
           </div>
