@@ -32,10 +32,9 @@ export class RegistrationPageComponent {
   dbInsert() {
     this.employeeService.insertEmployee(this.localForm.value);
     this.authResponseMsg = 'You have completed your registration.';
-    this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
     this.registrationCompleteFlag = true;
     console.log('RegistrationFlg : ', this.registrationCompleteFlag);
-
+    // this.employeeService.currentEmployee.email = this.employeeService.currentEmployee.password = '';
   }
 
   blockDbInsert() {
