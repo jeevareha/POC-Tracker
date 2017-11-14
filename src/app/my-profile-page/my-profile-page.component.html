@@ -10,11 +10,11 @@
       </div>
 
      <div class="form-group">
-         <label for="name">Employee ID</label> 
+         <label for="name">Employee ID</label> {{userId}}
      </div>
 
      <div class="form-group">
-         <label for="email">Email ID</label>
+         <label for="email">Email ID : </label> {{email}}
      </div>
 
      <div class="form-group">
@@ -23,3 +23,25 @@
 
 
      <button type="button"  class="btn btn-primary btn-lg" ng-click="">Add your project</button>
+
+
+     <table class="table table-bordered table-hover table-condensed">
+    
+    
+        <thead>
+            <tr>
+                <th style="text-align:center">Employee ID</th>
+                <th style="text-align:center">Employee Name</th>
+                <th style="text-align:center">Email ID</th>
+                <th style="text-align:center">Phone Number</th>
+            </tr>
+        </thead>
+        <tbody id="empTable">
+            <tr *ngFor="let employee of employeeList">
+                <td style="text-align:center">{{employee.EmpId}}</td>
+                <td style="text-align:center">{{employee.name}}</td>
+                <td style="text-align:center">{{employee.email}}</td>
+                <td style="text-align:center">{{employee.phnumber}}</td>
+            </tr>
+        </tbody>
+    </table>
