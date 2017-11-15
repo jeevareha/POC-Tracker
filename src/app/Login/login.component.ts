@@ -25,19 +25,16 @@ export class LoginComponent {
 
   constructor(private firebaseAuth: AngularFireAuth, private authService: AuthService, private router: Router) {
     
-    this.firebaseAuth.auth.setPersistence(firebase.auth.Auth.Persistence.SESSION)
-   }
-  //   then (user => {
-  //       if(user) {
-  //       // user is signed in
-  //       this.user = authService.user;
-  //       this.router.navigateByUrl("app-poc-page")
-  //     } else {
-  //       // user is signed out
-  //       this.router.navigate(['/'])
-  //     }
-  //   }
-  // )}
+    this.firebaseAuth.auth.onAuthStateChanged (user => {
+        if(user) {
+        // user is signed in
+       
+      } else {
+        // user is signed out
+      
+      }
+    }
+  )}
     // // this.errormsg = this.authService.msg;
     // // console.log('login.ts', this.authService.msg);
     // )}
@@ -48,7 +45,7 @@ export class LoginComponent {
 
     login(email, password) {
       this.firebaseAuth
-        .auth.onAuthStateChanged (value => {
+        .auth.setPersistence(firebase.auth.Auth.Persistence.SESSION).then (value => {
         this.firebaseAuth.auth.signInWithEmailAndPassword(this.email, this.password)
         .then(value => {
           console.log('Nice, it worked!');
